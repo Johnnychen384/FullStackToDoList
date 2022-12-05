@@ -16,28 +16,28 @@ app.listen(3000, () => {
 
 // Create - Add a task
 app.post('/task', (req, res) => {
-    todos.create(req.body, (error, todo) => {
+    Todos.create(req.body, (error, todo) => {
         res.json(todo)
     })
 })
 
 // Read - View tasks
 app.get('/task', (req, res) => {
-    todos.find({}, (error, allTasks) => {
+    Todos.find({}, (error, allTasks) => {
         res.json(allTasks)
     })
 })
 
 // Update - Edit tasks
 app.put('/task/:id', (req, res) => {
-    todos.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, todo) => {
+    Todos.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, todo) => {
         res.json(todo)
     })
 })
 
 // Delete - Delete tasks
 app.delete('/task/:id', (req, res) => {
-    todos.findByIdAndRemove(req.params.id, (error, todo) => {
+    Todos.findByIdAndRemove(req.params.id, (error, todo) => {
         res.json(todo)
     })
 })
