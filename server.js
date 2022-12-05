@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const app = express()
 const Todos = require('./models/todos.js')
 
+app.use(express.json())
+
 mongoose.connect('mongodb://localhost:27017/todos')
 mongoose.connection.once('open', () => {
     console.log('connected to mongod...')
@@ -13,12 +15,29 @@ app.listen(3000, () => {
 })
 
 // Create - Add a task
+app.post('/task', (req, res) => {
+    todos.create(req.body, (error, todo) => {
+        res.json(todo)
+    })
+})
 
 // Read - View tasks
-app.get('/', (req, res) => {
-    res.send("Hello world")
+app.get('/task', (req, res) => {
+    todos.find({}, (error, allTasks) => {
+        res.json(allTasks)
+    })
 })
 
 // Update - Edit tasks
+app.put('/task/:id', (req, res) => {
+    todos.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, todo) => {
+        res.json(todo)
+    })
+})
 
 // Delete - Delete tasks
+app.delete('/task/:id', (req, res) => {
+    todos.findByIdAndRemove(req.params.id, (error, todo) => {
+        res.json(todo)
+    })
+})
