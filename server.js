@@ -2,8 +2,10 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const Todos = require('./models/todos.js')
+const cors = require('cors')
 
 app.use(express.json())
+app.use(cors())
 
 mongoose.connect('mongodb://localhost:27017/todos')
 mongoose.connection.once('open', () => {
