@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const app = express()
 const Todos = require('./models/todos.js')
 
-mongoose.connect('mongodb://localhost:27017/animaladoption')
+mongoose.connect('mongodb://localhost:27017/todos')
 mongoose.connection.once('open', () => {
     console.log('connected to mongod...')
 })
