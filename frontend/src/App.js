@@ -55,7 +55,7 @@ function App() {
 
           <div className="form-floating">
             <input type="text" className="form-control" id="floatingInput" placeholder="What to do..." name="task" onChange={handleChange}/>
-            <label for="floatingInput">Email address</label>
+            <label for="floatingInput">Your Task....</label>
           </div>
           <button className="w-100 btn btn-lg btn-primary" type="submit">Add Task</button>
 
