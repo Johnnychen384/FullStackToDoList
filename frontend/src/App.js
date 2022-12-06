@@ -49,16 +49,19 @@ function App() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <h1 className="h3 mb-3 fw-normal">Please Add A Task</h1>
+      <main className="w-50 mx-auto my-5 text-center">
+        <form onSubmit={handleSubmit}>
+          <h1 className="h3 mb-3 fw-normal">Please Add A Task</h1>
 
-        <div class="form-floating">
-          <input type="text" className="form-control" id="floatingInput" placeholder="What to do..." name="task" onChange={handleChange}/>
-          <label for="floatingInput">Email address</label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Add Task</button>
+          <div className="form-floating">
+            <input type="text" className="form-control" id="floatingInput" placeholder="What to do..." name="task" onChange={handleChange}/>
+            <label for="floatingInput">Email address</label>
+          </div>
+          <button className="w-100 btn btn-lg btn-primary" type="submit">Add Task</button>
 
-      </form>
+        </form>
+      </main>
+      
     </>
   )
 }
