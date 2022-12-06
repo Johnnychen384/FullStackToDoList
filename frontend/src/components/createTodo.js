@@ -23,7 +23,7 @@ const CreateTodo = (props) => {
                         }}>Delete</button>
                     </div>
                 </div>
-                {editIt ? <Edit task={props.task}/> : null}
+                {editIt ? <Edit task={props.task} handleEdit={props.handleEdit}/> : null}
             </div>
         </>
     )
