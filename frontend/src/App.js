@@ -4,6 +4,8 @@ import './App.css';
 
 function App() {
   const [allTasks, setAllTasks] = useState([])
+  const [todo, setTodo] = useState({task: '', completed: false})
+
 
   const getAllTask = () => {
     axios.get('http://localhost:3000/task')
@@ -14,6 +16,15 @@ function App() {
   const handleCreate = (task) => {
     axios.post('http://localhost:3000/task', task)
     .then(res => setAllTasks([...allTasks, res.data]))
+  }
+
+  const handleChange = (e) => {
+    setTodo({...todo, [e.target.name]: e.target.value})
+}
+
+  const handleSubmit = (e) => {
+      e.preventDefault()
+      handleCreate(todo)
   }
 
   const handleEdit = (task) => {
@@ -38,7 +49,16 @@ function App() {
 
   return (
     <>
-      <h1>Hi</h1>
+      <form>
+        <h1 className="h3 mb-3 fw-normal">Please Add A Task</h1>
+
+        <div class="form-floating">
+          <input type="text" className="form-control" id="floatingInput" placeholder="What to do..." name="task"/>
+          <label for="floatingInput">Email address</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Add Task</button>
+
+      </form>
     </>
   )
 }
