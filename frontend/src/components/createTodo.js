@@ -1,15 +1,25 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Edit from './edit'
 
 const CreateTodo = (props) => {
+    console.log(props.task)
     const [editIt, setEditIt] = useState(false)
+    let checkIt;
+
+    if(props.task.completed){
+        checkIt = <input className="form-check-input" type="checkbox" id={props.task._id} checked/>
+    } else {
+        checkIt = <input className="form-check-input" type="checkbox" id={props.task._id} />
+    }
+
+
     return (
         <>
             <div className="card my-2">
                 <div className="card-body">
                     <h5 className="card-title">{props.task.task}</h5>
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id={props.task._id}/>
+                        {checkIt}
                         <label className="form-check-label" htmlFor={props.task._id}>
                             Completed
                         </label>
