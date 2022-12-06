@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import  axios from "axios"
 import './App.css';
+import CreateTodo from "./components/createTodo"
 
 function App() {
   const [allTasks, setAllTasks] = useState([])
@@ -25,6 +26,8 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     handleCreate(todo)
+    document.getElementById('floatingInput').value = ''
+
   }
 
   const handleEdit = (task) => {
@@ -47,6 +50,8 @@ function App() {
     getAllTask()
   }, [])
 
+  const taskArray = allTasks.map((task, i) => <CreateTodo key={i} task={task} handleEdit={handleEdit} handleDelete={handleDelete}/>)
+
   return (
     <>
       <main className="w-50 mx-auto my-5 text-center">
@@ -55,13 +60,15 @@ function App() {
 
           <div className="form-floating">
             <input type="text" className="form-control" id="floatingInput" placeholder="What to do..." name="task" onChange={handleChange}/>
-            <label for="floatingInput">Your Task....</label>
+            <label htmlFor="floatingInput">Your Task....</label>
           </div>
           <button className="w-100 btn btn-lg btn-primary" type="submit">Add Task</button>
 
         </form>
       </main>
-      
+      <div className="w-75 mx-auto">
+        {taskArray}
+      </div>
     </>
   )
 }
