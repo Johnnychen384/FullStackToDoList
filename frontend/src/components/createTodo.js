@@ -9,8 +9,8 @@ const CreateTodo = (props) => {
                 <div className="card-body">
                     <h5 className="card-title">{props.task.task}</h5>
                     <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="completed"/>
-                        <label className="form-check-label" htmlFor="completed">
+                        <input className="form-check-input" type="checkbox" value="" id={props.task._id}/>
+                        <label className="form-check-label" htmlFor={props.task._id}>
                             Completed
                         </label>
                     </div>
