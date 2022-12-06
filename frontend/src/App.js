@@ -53,23 +53,26 @@ function App() {
   const taskArray = allTasks.map((task, i) => <CreateTodo key={i} task={task} handleEdit={handleEdit} handleDelete={handleDelete}/>)
 
   return (
-    <>
+    <div className="p-3 mb-2 bg-dark bg-gradient text-white">
       <main className="w-50 mx-auto my-5 text-center">
-        <form onSubmit={handleSubmit}>
-          <h1 className="h3 mb-3 fw-normal">Please Add A Task</h1>
-
-          <div className="form-floating">
-            <input type="text" className="form-control" id="floatingInput" placeholder="What to do..." name="task" onChange={handleChange}/>
-            <label htmlFor="floatingInput">Your Task....</label>
+        <h1>Task Manager</h1>
+        <form onSubmit={handleSubmit} className="mt-5">
+          <div className="row g-1 justify-content-center">
+            <div className="col-auto">
+              <div className="mb-5">
+                <input type="text" className="form-control" id="floatingInput" placeholder="Enter task here" name="task" onChange={handleChange}/>
+              </div>
+            </div>
+            <div className="col-auto">
+              <button className="btn btn btn-dark" type="submit">Add Task</button>
+            </div>
           </div>
-          <button className="w-100 btn btn-lg btn-primary" type="submit">Add Task</button>
-
         </form>
       </main>
       <div className="w-75 mx-auto">
         {taskArray}
       </div>
-    </>
+    </div>
   )
 }
 
